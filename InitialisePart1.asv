@@ -1,9 +1,0 @@
-a_phi_1 = 2.87;
-a_phi_2 = -0.05;
-
-k_d_phi = 0;
-k_p_phi = 0;
-k_i_phi = 0;
-
-k_p_khi = 0;
-k_i_khi = 0;
