@@ -13,8 +13,8 @@ delta_a_max = 30*deg2rad;
 e_max = 15*deg2rad;
 omega_n = sqrt(abs(a_phi_2)*delta_a_max/e_max);
 zeta = 0.707;
-omega_x = 1/5 * omega_n;
-zeta_x = 5;
+omega_x = 1/10 * omega_n;
+zeta_x = 0.3;
 
 k_d_phi = (2*zeta*omega_n-a_phi_1)/a_phi_2;
 k_p_phi = delta_a_max/e_max*sign(a_phi_2);
