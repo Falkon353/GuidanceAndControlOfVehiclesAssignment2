@@ -1,3 +1,11 @@
+%global C;
+%global R;
+%global PHI;
+%global DELTA;
+%global GAMMA;
+
+
+
 deg2rad = pi/180;
 rad2deg = 180/pi;
 
@@ -36,10 +44,10 @@ A = [-0.322, 0.052, 0.028, -1.12, 0.002;
              6.87, 0, -0.04, -0.32, -0.02;
              0, 0, 0, 0, -7.5];
          
-B = [0; 0; 0; 0; -7.5];
+B = [0; 0; 0; 0; 7.5];
 
 %%% Kalam constants
-Q_vec = [0.001; 1; 100; 10; 0];
+Q_vec = [0.001; 1; 100; 10];
 Q = h*10^(-6)*diag(Q_vec); 
 
 P_0 = zeros(4,4);
@@ -56,6 +64,8 @@ E = eye(4);
 [PHI, DELTA] = c2d(A(1:4,1:4),A(1:4,5),h);
 [PHI,GAMMA]  = c2d(A(1:4,1:4),E,h);
 
+%global isInitialised;
+%isInitialised = 0;
 
 
 
