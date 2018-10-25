@@ -19,14 +19,14 @@ e_max = 15*deg2rad;
 omega_n = sqrt(abs(a_phi_2)*delta_a_max/e_max);
 zeta = 0.707;
 omega_x = 1/10 * omega_n;
-zeta_x = 0.3;
-
+zeta_x = zeta;%0.3;
+ 
 k_d_phi = (2*zeta*omega_n-a_phi_1)/a_phi_2;
-k_p_phi = 200*delta_a_max/e_max*sign(a_phi_2);
+k_p_phi = delta_a_max/e_max*sign(a_phi_2); %200*delta_a_max/e_max*sign(a_phi_2);
 k_i_phi = -1;
 
 k_p_khi = 1*(V_g/g)*2*zeta_x*omega_x;
-k_i_khi = (V_g/g)*(omega_x)^2/5;
+k_i_khi = (V_g/g)*(omega_x)^2; %(V_g/g)*(omega_x)^2/5;
 
 Desiered_khi = 0;
 
@@ -55,5 +55,98 @@ E = eye(4);
 
 [PHI, DELTA] = c2d(A(1:4,1:4),A(1:4,5),h);
 [PHI,GAMMA]  = c2d(A(1:4,1:4),E,h);
+
+sim('Part2FullModel');
+
+
+%%%Plots
+figure (1); clf;
+hold on;
+plot(Controll_input);
+plot(chi);
+hold off;
+grid on;
+legend('Course Desiered','Course');
+title('Course');
+xlabel('time [s]'); 
+ylabel('angle [deg]');
+
+figure (2); clf;
+hold on;
+plot(Aileron_input);
+hold off;
+grid on;
+legend('Aileron input');
+title('Aileron input');
+xlabel('time [s]'); 
+ylabel('angle [deg]');
+
+figure (3); clf;
+hold on;
+plot(True_Beta);
+plot(Estimated_Beta);
+hold off;
+grid on;
+legend('True Sideslip','Estimated Sidelsip');
+title('Sideslip');
+xlabel('time [s]'); 
+ylabel('angle [deg]');
+
+figure (4); clf;
+hold on;
+plot(True_Phi);
+plot(Estimated_Phi);
+hold off;
+grid on;
+legend('True Roll','Estimated Roll');
+title('Roll');
+xlabel('time [s]'); 
+ylabel('angle [deg]');
+
+figure (5); clf;
+hold on;
+plot(True_P);
+plot(Estimated_P);
+plot(Noisy_P);
+hold off;
+grid on;
+legend('True Roll Rate','Estimated Roll Rate','Noisy Roll Rate');
+title('Roll rate');
+xlabel('time [s]'); 
+ylabel('angle/s [deg/s]');
+
+figure (6); clf;
+hold on;
+plot(True_R);
+plot(Estimated_R);
+plot(Noisy_R);
+hold off;
+grid on;
+legend('True Yaw Rate','Estimated Yaw Rate','Noisy Yaw Rate');
+title('Yaw Rate');
+xlabel('time [s]'); 
+ylabel('angle/s [deg/s]');
+
+figure (7); clf;
+hold on;
+plot(True_R);
+plot(Estimated_R);
+hold off;
+grid on;
+legend('True Yaw Rate','Estimated Yaw Rate');
+title('Yaw Rate');
+xlabel('time [s]'); 
+ylabel('angle/s [deg/s]');
+
+figure (8); clf;
+hold on;
+plot(True_P);
+plot(Estimated_P);
+hold off;
+grid on;
+legend('True Roll Rate','Estimated Roll Rate');
+title('Roll rate');
+xlabel('time [s]'); 
+ylabel('angle/s [deg/s]');
 
 
